@@ -616,7 +616,7 @@
         </p>
 
         <div class="contact-grid">
-          <form>
+          <form <form onsubmit="sendToWhatsApp(); return false;">
             <input type="text" placeholder="Your Name" required>
             <input type="email" placeholder="Your Email" required>
             <textarea rows="4" placeholder="Your Message or Treatment Request" required></textarea>
@@ -662,9 +662,26 @@
 
 
   </div> <!-- end page-wrap -->
+<script>
+function sendToWhatsApp() {
+    var name = document.getElementById("name").value;
+    var email = document.getElementById("email").value;
+    var message = document.getElementById("message").value;
 
+    var whatsappNumber = "447902700222"; // Your WhatsApp number
+
+    var url = "https://wa.me/" + whatsappNumber + "?text="
+        + "Name: " + encodeURIComponent(name) + "%0A"
+        + "Email: " + encodeURIComponent(email) + "%0A"
+        + "Message: " + encodeURIComponent(message);
+
+    window.open(url, "_blank");
+}
+</script>
 </body>
 </html>
+
+
 
 
 
