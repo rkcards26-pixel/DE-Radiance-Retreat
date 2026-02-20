@@ -1,443 +1,651 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>De Radiance Retreat | Luxury Beauty & Wellness</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <!-- Font Awesome for Social Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
-<style>
 
-/* Reset */
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    scroll-behavior: smooth;
-}
-
-body {
-    font-family: 'Segoe UI', Roboto, system-ui, sans-serif;
-    background: linear-gradient(-45deg, #0f0c29, #302b63, #24243e, #1f1c2c);
-    background-size: 400% 400%;
-    animation: gradientBG 18s ease infinite;
-    color: #ffffff;
-    line-height: 1.6;
-    overflow-x: hidden;
-}
-
-@keyframes gradientBG {
-    0% { background-position: 0% 50%; }
-    50% { background-position: 100% 50%; }
-    100% { background-position: 0% 50%; }
-}
-
-/* Header */
-header {
-    position: fixed;
-    width: 100%;
-    background: rgba(10,5,20,0.7);
-    backdrop-filter: blur(16px);
-    padding: 16px 10%;
-    height: 80px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    z-index: 1000;
-    box-shadow: 0 4px 20px rgba(0,0,0,0.25);
-    transition: transform 0.4s ease;
-}
-
-.logo {
-    font-size: 26px;
-    font-weight: 700;
-    letter-spacing: 2px;
-    background: linear-gradient(90deg, #a5f0ff, #ff99e6, #a5f0ff);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    animation: shimmer 4s infinite linear;
-    background-size: 300%;
-}
-
-@keyframes shimmer {
-    0% { background-position: 0%; }
-    100% { background-position: 300%; }
-}
-
-nav a {
-    color: #f0f0ff;
-    text-decoration: none;
-    margin-left: 30px;
-    font-size: 15px;
-}
-
-nav a:hover {
-    color: #fff;
-}
-
-/* Hero */
-.hero {
-    min-height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-    padding: 120px 5% 0;
-}
-
-.hero h1 {
-    font-size: 58px;
-    background: linear-gradient(135deg, #b0f5ff, #ffb0e6, #c0a0ff);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-}
-
-.hero p {
-    margin-top: 20px;
-    font-size: 20px;
-    max-width: 700px;
-    margin-left: auto;
-    margin-right: auto;
-}
-
-.btn {
-    margin-top: 35px;
-    padding: 16px 42px;
-    border-radius: 60px;
-    background: linear-gradient(135deg, #00d4ff, #ff1ab3);
-    color: #fff;
-    text-decoration: none;
-    display: inline-block;
-    position: relative;
-    overflow: hidden;
-}
-
-.btn::after {
-    content: "";
-    position: absolute;
-    top: -50%;
-    left: -50%;
-    width: 200%;
-    height: 200%;
-    background: radial-gradient(circle, rgba(255,0,180,0.55) 0%, transparent 70%);
-    transform: scale(0);
-    transition: transform 0.5s ease;
-}
-
-.btn:hover::after {
-    transform: scale(1);
-}
-
-/* Sections */
-section {
-    padding: 80px 10%;
-}
-
-.section-title {
-    text-align: center;
-    font-size: 38px;
-    margin-bottom: 50px;
-    background: linear-gradient(90deg, #00f5ff, #ff80d5);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-}
-
-/* Services */
-.services {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-    gap: 30px;
-}
-
-.service-card {
-    background: rgba(255,255,255,0.04);
-    padding: 35px 25px;
-    border-radius: 28px;
-    text-align: center;
-    transition: 0.4s ease;
-    border: 1px solid rgba(255,255,255,0.05);
-    opacity: 0;
-    animation: fadeInUp 1.2s ease forwards;
-}
-
-.service-card:hover {
-    transform: translateY(-10px);
-    box-shadow:
-        0 0 25px rgba(255,0,180,0.45),
-        0 0 40px rgba(255,0,220,0.35),
-        0 0 60px rgba(255,0,200,0.25);
-}
-
-.service-card p {
-    margin-top: 10px;
-    font-size: 14px;
-    opacity: 0.8;
-}
-
-/* Gallery */
-.gallery {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-    gap: 20px;
-}
-
-.gallery img {
-    width: 100%;
-    border-radius: 16px;
-    opacity: 0.95;
-    transition: 0.3s ease;
-}
-
-.gallery img:hover {
-    transform: scale(1.05);
-}
-
-/* Contact */
-.contact {
-    max-width: 700px;
-    margin: 0 auto;
-    background: rgba(255,255,255,0.02);
-    padding: 45px;
-    border-radius: 50px;
-}
-
-label {
-    font-size: 14px;
-    margin-bottom: 6px;
-    display: block;
-    opacity: 0.9;
-}
-
-input, textarea {
-    width: 100%;
-    padding: 15px;
-    margin-bottom: 18px;
-    border-radius: 40px;
-    border: none;
-}
-
-button {
-    width: 100%;
-    padding: 16px;
-    border-radius: 60px;
-    border: none;
-    background: linear-gradient(135deg, #00d4ff, #ff36b0);
-    color: #fff;
-}
-
-/* Floating Social */
-.social-float {
-    position: fixed;
-    bottom: 30px;
-    right: 30px;
-    display: flex;
-    flex-direction: column;
-    gap: 16px;
-}
-
-.social-icon {
-    width: 60px;
-    height: 60px;
-    border-radius: 50%;
-    background: rgba(20,15,30,0.7);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 28px;
-    text-decoration: none;
-    color: white;
-    transition: 0.3s ease;
-}
-
-.social-icon:hover {
-    transform: scale(1.15);
-    box-shadow: 0 0 20px currentColor;
-}
-
-.social-icon.whatsapp { color: #25D366; }
-.social-icon.instagram { color: #ff0099; }
-.social-icon.tiktok { color: ##ff0000; }
-
-/* Footer */
-footer {
-    text-align: center;
-    padding: 25px;
-    background: rgba(8,5,15,0.9);
-    border-top: 1px solid rgba(255,255,255,0.1);
-}
-
-/* Fade-in Up Animation */
-.fade-in {
-    opacity: 0;
-    transform: translateY(40px);
-    animation: fadeInUp 1.2s ease forwards;
-}
-
-@keyframes fadeInUp {
-    to {
-        opacity: 1;
-        transform: translateY(0);
+  <!-- PWA -->
+  <link rel="manifest" href="manifest.json">
+  <script>
+    if ("serviceWorker" in navigator) {
+      navigator.serviceWorker.register("service-worker.js");
     }
+  </script>
+
+  <title>De Radiance Retreat | Luxury Beauty & Wellness</title>
+
+  <!-- Google Font -->
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Poppins:wght@300;400;500&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --bg-main: #fdf7f8;
+      --bg-panel: rgba(255, 255, 255, 0.92);
+      --rose: #d48a8a;
+      --rose-deep: #b86a6a;
+      --rose-soft: #f3d6d6;
+      --text-main: #333333;
+      --text-soft: #666666;
+      --radius-lg: 22px;
+      --shadow-soft: 0 18px 45px rgba(212, 138, 138, 0.18);
+      --shadow-soft-hover: 0 22px 60px rgba(212, 138, 138, 0.28);
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: 'Poppins', sans-serif;
+      background:
+        radial-gradient(circle at top left, #ffe6ec 0, transparent 55%),
+        radial-gradient(circle at bottom right, #ffecec 0, transparent 55%),
+        var(--bg-main);
+      color: var(--text-main);
+      scroll-behavior: smooth;
+    }
+
+    .page-wrap {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 0 18px 60px;
+    }
+
+    /* Sticky Navigation */
+    nav {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      backdrop-filter: blur(16px);
+      background: linear-gradient(to right, rgba(255,255,255,0.96), rgba(255,245,246,0.96));
+      border-bottom: 1px solid var(--rose-soft);
+      box-shadow: 0 10px 30px rgba(212, 138, 138, 0.12);
+    }
+    .nav-inner {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 12px 18px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .brand {
+      font-family: 'Playfair Display', serif;
+      font-size: 20px;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--rose-deep);
+    }
+    .nav-links a {
+      color: var(--rose);
+      margin-left: 18px;
+      text-decoration: none;
+      font-weight: 500;
+      letter-spacing: 0.06em;
+      font-size: 13px;
+      text-transform: uppercase;
+      position: relative;
+      padding-bottom: 4px;
+      transition: 0.3s;
+    }
+    .nav-links a::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      width: 0;
+      height: 2px;
+      background: linear-gradient(90deg, var(--rose), var(--rose-deep));
+      transition: width 0.3s;
+    }
+    .nav-links a:hover {
+      color: var(--rose-deep);
+    }
+    .nav-links a:hover::after {
+      width: 100%;
+    }
+
+    /* Section Shell */
+    section {
+      margin-top: 40px;
+    }
+    .panel {
+      background: var(--bg-panel);
+      border-radius: var(--radius-lg);
+      box-shadow: var(--shadow-soft);
+      padding: 32px 26px;
+      position: relative;
+      overflow: hidden;
+    }
+    .panel::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(circle at top right, rgba(212,138,138,0.16), transparent 55%);
+      pointer-events: none;
+    }
+
+    .section-label {
+      text-transform: uppercase;
+      letter-spacing: 0.18em;
+      font-size: 11px;
+      color: var(--rose-deep);
+      margin-bottom: 6px;
+    }
+    h1, h2 {
+      font-family: 'Playfair Display', serif;
+      margin: 0 0 10px;
+      color: var(--rose-deep);
+    }
+    h1 {
+      font-size: 40px;
+    }
+    h2 {
+      font-size: 28px;
+      text-align: left;
+    }
+    .section-sub {
+      font-size: 14px;
+      color: var(--text-soft);
+      margin-bottom: 18px;
+    }
+
+    /* Hero Layout */
+    .hero {
+      display: grid;
+      grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr);
+      gap: 26px;
+      align-items: center;
+    }
+    .hero-main p {
+      font-size: 16px;
+      line-height: 1.6;
+      color: var(--text-soft);
+      margin-bottom: 22px;
+    }
+    .hero-tagline {
+      font-size: 13px;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--rose);
+      margin-bottom: 10px;
+    }
+    .hero-cta {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+      align-items: center;
+    }
+    .btn-primary {
+      background: linear-gradient(135deg, #f0c3c3, var(--rose));
+      color: #fff;
+      padding: 11px 22px;
+      border-radius: 999px;
+      border: none;
+      font-size: 14px;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      cursor: pointer;
+      box-shadow: 0 14px 30px rgba(212, 138, 138, 0.45);
+      transition: 0.3s;
+    }
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 18px 40px rgba(212, 138, 138, 0.6);
+    }
+    .btn-ghost {
+      background: transparent;
+      border-radius: 999px;
+      border: 1px solid var(--rose-soft);
+      padding: 10px 18px;
+      font-size: 13px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--rose-deep);
+      cursor: pointer;
+      transition: 0.3s;
+    }
+    .btn-ghost:hover {
+      border-color: var(--rose);
+      background: rgba(244, 214, 214, 0.25);
+    }
+
+    .hero-side {
+      border-radius: 20px;
+      padding: 20px 18px;
+      background: radial-gradient(circle at top left, rgba(255,255,255,0.9), rgba(255,230,234,0.9));
+      box-shadow: var(--shadow-soft);
+      position: relative;
+    }
+    .hero-side::after {
+      content: "De Radiance";
+      position: absolute;
+      bottom: 10px;
+      right: 16px;
+      font-family: 'Playfair Display', serif;
+      font-size: 14px;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: rgba(184,106,106,0.35);
+    }
+    .hero-highlight {
+      font-size: 13px;
+      color: var(--text-soft);
+      margin-bottom: 10px;
+    }
+    .hero-pills {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 8px;
+    }
+    .pill {
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.14em;
+      padding: 6px 10px;
+      border-radius: 999px;
+      border: 1px solid rgba(212,138,138,0.4);
+      color: var(--rose-deep);
+      background: rgba(255,255,255,0.7);
+    }
+
+    /* GLOWING SERVICE CARDS — NEW SECTION */
+    .service-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 22px;
+      margin-top: 25px;
+    }
+
+    .service-card {
+      background: #ffffff;
+      padding: 28px 22px;
+      border-radius: 22px;
+
+      border: 1px solid rgba(212, 138, 138, 0.35);
+      box-shadow:
+        0 0 12px rgba(212, 138, 138, 0.25),
+        0 0 28px rgba(212, 138, 138, 0.18),
+        0 0 45px rgba(212, 138, 138, 0.12);
+
+      text-align: center;
+      color: #444;
+      transition: 0.35s ease;
+    }
+
+    .service-card:hover {
+      transform: translateY(-4px);
+      box-shadow:
+        0 0 18px rgba(212, 138, 138, 0.45),
+        0 0 38px rgba(212, 138, 138, 0.35),
+        0 0 65px rgba(212, 138, 138, 0.25);
+    }
+
+    .service-card .icon {
+      width: 70px;
+      height: 70px;
+      margin: 0 auto 14px;
+      border-radius: 50%;
+      background: rgba(212, 138, 138, 0.15);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-size: 32px;
+      color: #d48a8a;
+      box-shadow: 0 0 18px rgba(212, 138, 138, 0.35);
+    }
+
+    .service-card h3 {
+      margin: 10px 0 6px;
+      font-size: 20px;
+      font-weight: 600;
+      color: #b56f6f;
+    }
+
+    .service-card p {
+      font-size: 14px;
+      color: #666;
+      line-height: 1.5;
+    }
+
+    /* Gallery */
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 14px;
+      margin-top: 10px;
+    }
+    .gallery-grid img {
+      width: 100%;
+      display: block;
+      border-radius: 16px;
+      border: 1px solid var(--rose-soft);
+      box-shadow: 0 12px 30px rgba(212,138,138,0.25);
+      transition: 0.35s;
+      object-fit: cover;
+    }
+    .gallery-grid img:hover {
+      transform: translateY(-4px) scale(1.02);
+      box-shadow: 0 18px 45px rgba(212,138,138,0.4);
+    }
+
+    /* Contact */
+    .contact-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1.1fr) minmax(0, 0.9fr);
+      gap: 26px;
+    }
+    form input, form textarea {
+      width: 100%;
+      padding: 11px 12px;
+      margin: 6px 0 12px;
+      background: rgba(255,255,255,0.9);
+      border: 1px solid var(--rose-soft);
+      color: var(--text-main);
+      border-radius: 10px;
+      box-shadow: 0 6px 18px rgba(212, 138, 138, 0.12);
+      font-size: 13px;
+    }
+    form textarea {
+      resize: vertical;
+      min-height: 110px;
+    }
+
+    .contact-info {
+      font-size: 13px;
+      color: var(--text-soft);
+      line-height: 1.7;
+    }
+    .contact-info strong {
+      color: var(--rose-deep);
+    }
+
+    /* Footer */
+    footer {
+      text-align: center;
+      padding: 26px 18px 10px;
+      color: #888;
+      font-size: 12px;
+      border-top: 1px solid var(--rose-soft);
+      margin-top: 40px;
+    }
+    footer a {
+      color: var(--rose);
+      text-decoration: none;
+      margin: 0 5px;
+      font-weight: 500;
+    }
+
+    /* Floating Social Buttons */
+    .social-float {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      z-index: 300;
+    }
+    .social-icon {
+      width: 52px;
+      height: 52px;
+      border-radius: 50%;
+      background: radial-gradient(circle at top left, #ffe6ec, var(--rose));
+      color: #fff;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-size: 22px;
+      text-decoration: none;
+      box-shadow: 0 14px 30px rgba(212, 138, 138, 0.6);
+      transition: 0.3s;
+    }
+    .social-icon:hover {
+      transform: translateY(-3px) scale(1.05);
+      box-shadow: 0 18px 45px rgba(212, 138, 138, 0.8);
+    }
+
+
+
+
+.social-icon.whatsapp { 
+    color: #25D366; /* WhatsApp green */
 }
 
-</style>
+.social-icon.instagram { 
+    color: #ff0099; /* Pink */
+}
+
+.social-icon.tiktok { 
+    color: #ffffff; /* White */
+}
+
+.social-icon.tiktok:hover {
+    color: #000000; /* Hover colour example */
+}
+    /* Responsive */
+    @media (max-width: 800px) {
+      .hero,
+      .contact-grid {
+        grid-template-columns: 1fr;
+      }
+      .hero-side {
+        order: -1;
+      }
+      .nav-inner {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 6px;
+      }
+      .nav-links {
+        width: 100%;
+      }
+      .nav-links a {
+        margin-left: 0;
+        margin-right: 14px;
+      }
+    }
+  </style>
 </head>
 
-<body>
 
-<header>
-    <div class="logo">De Radiance Retreat</div>
-    <nav>
+<body>
+  <nav>
+    <div class="nav-inner">
+      <div class="brand">De Radiance Retreat</div>
+      <div class="nav-links">
         <a href="#home">Home</a>
         <a href="#services">Services</a>
         <a href="#gallery">Gallery</a>
         <a href="#contact">Contact</a>
-    </nav>
-</header>
-
-<section class="hero fade-in" id="home">
-    <div>
-        <h1>Luxury Beauty & Wellness Sanctuary</h1>
-       
-        <p>Welcome to De Radiance Retreat — your calm little escape for beauty and relaxation✨
-<p>
-
-<p>
-
-<p>
-<p> <u/> About us </u>
-<br>
-We offer everything from soothing massages and glowing facials to threading, waxing, mani-pedis, lash lifts, brow shaping, tints, Hijama Cupping Therapy and Hopi ear candling.
-With a warm, friendly team and a peaceful atmosphere, it’s the perfect place to switch off, unwind, and feel your best.💆‍♀️
-<br>
-<br>
-<b>Book your appointment and treat yourself — you deserve it</b> 💖.
-</p>
-   <a href="#contact" class="btn">Book Appointment</a>
+      </div>
     </div>
-</section>
+  </nav>
 
+  <div class="page-wrap">
 
-    </div>
-</section>
+    <!-- HERO -->
+    <section id="home">
+      <div class="panel hero">
+        <div class="hero-main">
+          <div class="hero-tagline">Luxury Beauty & Wellness • Lower Darwen</div>
+          <h1>Radiance, Rejuvenation & Retreat in One Space.</h1>
+          <p>
+            Facials, Hijama, massage, nails, waxing and more — curated treatments in a calm, private and elegant setting,
+            designed for women who want to feel restored, not rushed.
+          </p>
+          <div class="hero-cta">
+            <a href="#contact"><button class="btn-primary">Book Appointment</button></a>
+            <a href="#services"><button class="btn-ghost">View Services</button></a>
+          </div>
+        </div>
 
-<section id="services" class="fade-in">
-    <div class="section-title">Our Services</div>
-    <div class="services">
+        <div class="hero-side">
+          <div class="section-label">At a glance</div>
+          <div class="hero-highlight"><strong>Location:</strong> Lower Darwen, Blackburn</div>
+          <div class="hero-highlight"><strong>Specialities:</strong> Facials, Hijama Cupping, Massage, Nails, Waxing</div>
+          <div class="hero-pills">
+            <div class="pill">Private Studio</div>
+            <div class="pill">Women Only</div>
+            <div class="pill">Luxury Touch</div>
+            <div class="pill">Holistic Care</div>
+          </div>
+        </div>
+      </div>
+    </section>
 
-        <div class="service-card">
-            <i class="fas fa-spa" style="font-size:32px; margin-bottom:12px;"></i>
+    <!-- SERVICES (NEW GLOWING CARDS) -->
+    <section id="services">
+      <div class="panel">
+        <div class="section-label">Treatments</div>
+        <h2>Our Luxury Services</h2>
+        <p class="section-sub">
+          A carefully curated menu of beauty and wellness treatments, blending relaxation, results and ritual.
+        </p>
+
+        <div class="service-grid">
+
+          <div class="service-card">
+            <div class="icon"><i class="fas fa-spa"></i></div>
             <h3>Facials</h3>
             <p>Glow-boosting treatments tailored to your skin.</p>
-        </div>
+          </div>
 
-        <div class="service-card">
-            <i class="fas fa-hand-sparkles" style="font-size:32px; margin-bottom:12px;"></i>
+          <div class="service-card">
+            <div class="icon"><i class="fas fa-hand-sparkles"></i></div>
             <h3>Manicure</h3>
             <p>Luxury nail shaping, buffing & polish.</p>
-        </div>
+          </div>
 
-        <div class="service-card">
-            <i class="fas fa-shoe-prints" style="font-size:32px; margin-bottom:12px;"></i>
+          <div class="service-card">
+            <div class="icon"><i class="fas fa-shoe-prints"></i></div>
             <h3>Pedicure</h3>
             <p>Relaxing foot care & deep hydration.</p>
-        </div>
+          </div>
 
-        <div class="service-card">
-            <i class="fas fa-feather" style="font-size:32px; margin-bottom:12px;"></i>
+          <div class="service-card">
+            <div class="icon"><i class="fas fa-stream"></i></div>
             <h3>Waxing</h3>
             <p>Smooth, long-lasting hair removal.</p>
-        </div>
+          </div>
 
-        <div class="service-card">
-            <i class="fas fa-hands" style="font-size:32px; margin-bottom:12px;"></i>
+          <div class="service-card">
+            <div class="icon"><i class="fas fa-leaf"></i></div>
             <h3>Body Massages</h3>
             <p>Relaxation, deep tissue & aromatherapy.</p>
-        </div>
+          </div>
 
-        <div class="service-card">
-            <i class="fas fa-thread" style="font-size:32px; margin-bottom:12px;"></i>
+          <div class="service-card">
+            <div class="icon"><i class="fas fa-eye"></i></div>
             <h3>Threading</h3>
             <p>Precision brow & facial hair shaping.</p>
-        </div>
+          </div>
 
-        <div class="service-card">
-            <i class="fas fa-eye" style="font-size:32px; margin-bottom:12px;"></i>
+          <div class="service-card">
+            <div class="icon"><i class="fas fa-feather"></i></div>
             <h3>Lashlift</h3>
             <p>Natural curl enhancement for lashes.</p>
-        </div>
+          </div>
 
-        <div class="service-card">
-            <i class="fas fa-tint" style="font-size:32px; margin-bottom:12px;"></i>
+          <div class="service-card">
+            <div class="icon"><i class="fas fa-eye-dropper"></i></div>
             <h3>Eyebrow & Eyelash Tint</h3>
             <p>Define & enhance your natural beauty.</p>
-        </div>
+          </div>
 
-        <div class="service-card">
-            <i class="fas fa-ear-listen" style="font-size:32px; margin-bottom:12px;"></i>
+          <div class="service-card">
+            <div class="icon"><i class="fas fa-ear-listen"></i></div>
             <h3>Hopi Ear Candling</h3>
             <p>Relaxing ear cleansing therapy.</p>
-        </div>
+          </div>
 
-        <div class="service-card">
-            <i class="fas fa-moon" style="font-size:32px; margin-bottom:12px;"></i>
+          <div class="service-card">
+            <div class="icon"><i class="fas fa-moon"></i></div>
             <h3>Hijama Cupping Therapy</h3>
             <p>Detoxifying traditional therapy.</p>
+          </div>
+
         </div>
+      </div>
+    </section>
 
-    </div>
-</section>
+    <!-- GALLERY -->
+    <section id="gallery">
+      <div class="panel">
+        <div class="section-label">Inside the retreat</div>
+        <h2>Gallery</h2>
+        <p class="section-sub">
+          A glimpse into the space, details and treatments that make De Radiance Retreat feel like a true escape.
+        </p>
 
-<section id="gallery" class="fade-in">
-    <div class="section-title">Gallery</div>
+        <div class="gallery-grid">
+          <img src="https://i.ibb.co/Xx4NxBjQ/14.png" alt="">
+          <img src="https://i.ibb.co/G4brcrsH/13.png" alt="">
+          <img src="https://i.ibb.co/zWgYSjSc/15.png" alt="">
+          <img src="https://i.ibb.co/Pv2ffS83/17.png" alt="">
+          <img src="https://i.ibb.co/XZ9GFyP5/20.png" alt="">
+          <img src="https://i.ibb.co/KpQXXKwF/21.png" alt="">
+          <img src="https://i.ibb.co/1tbW27FB/3.png" alt="">
+          <img src="https://i.ibb.co/B59mtdT4/4.png" alt="">
+          <img src="https://i.ibb.co/ynwQ6QjL/5.png" alt="">
+          <img src="https://i.ibb.co/G4RNw4JQ/6.png" alt="">
+          <img src="https://i.ibb.co/8DRhBLRZ/7.png" alt="">
+          <img src="https://i.ibb.co/ZzYJ0d0Z/8.png" alt="">
+          <img src="https://i.ibb.co/LdMzCCqT/9.png" alt="">
+          <img src="https://i.ibb.co/NgrYHJ6q/10.png" alt="">
+          <img src="https://i.ibb.co/Q3YbWGzJ/11.png" alt="">
+          <img src="https://i.ibb.co/5WqDKWYW/12.png" alt="">
+        </div>
+      </div>
+    </section>
 
-    <div class="gallery">
+    <!-- CONTACT -->
+    <section id="contact">
+      <div class="panel">
+        <div class="section-label">Bookings & enquiries</div>
+        <h2>Contact & Booking</h2>
+        <p class="section-sub">
+          Share a few details and we’ll get back to you with available times and treatment options.
+        </p>
 
-        <img src="https://i.ibb.co/Xx4NxBjQ/14.png" alt="">
-        <img src="https://i.ibb.co/G4brcrsH/13.png" alt="">
-        <img src="https://i.ibb.co/zWgYSjSc/15.png" alt="">
-        <img src="https://i.ibb.co/Pv2ffS83/17.png" alt="">
-        <img src="https://i.ibb.co/XZ9GFyP5/20.png" alt="">
-        <img src="https://i.ibb.co/KpQXXKwF/21.png" alt="">
-        <img src="https://i.ibb.co/1tbW27FB/3.png" alt="">
-        <img src="https://i.ibb.co/B59mtdT4/4.png" alt="">
-        <img src="https://i.ibb.co/ynwQ6QjL/5.png" alt="">
-        <img src="https://i.ibb.co/G4RNw4JQ/6.png" alt="">
-        <img src="https://i.ibb.co/8DRhBLRZ/7.png" alt="">
-        <img src="https://i.ibb.co/ZzYJ0d0Z/8.png" alt="">
-        <img src="https://i.ibb.co/LdMzCCqT/9.png" alt="">
-        <img src="https://i.ibb.co/NgrYHJ6q/10.png" alt="">
-        <img src="https://i.ibb.co/Q3YbWGzJ/11.png" alt="">
-        <img src="https://i.ibb.co/5WqDKWYW/12.png" alt="">
+        <div class="contact-grid">
+          <form>
+            <input type="text" placeholder="Your Name" required>
+            <input type="email" placeholder="Your Email" required>
+            <textarea rows="4" placeholder="Your Message or Treatment Request" required></textarea>
+            <button type="submit" class="btn-primary">Send Message</button>
+          </form>
 
-    </div>
-</section>
+          <div class="contact-info">
+            <p><strong>Prefer WhatsApp?</strong><br>
+              Message directly via the floating WhatsApp icon on the screen.</p>
+            <p><strong>Location:</strong><br>
+              Private studio in Lower Darwen, Blackburn (full address shared upon booking).</p>
+            <p><strong>Opening:</strong><br>
+              By appointment only — flexible daytime and selected evening slots.</p>
+          </div>
+        </div>
+      </div>
+    </section>
 
-<section id="contact" class="fade-in">
-    <div class="section-title">Contact & Booking</div>
-    <div class="contact">
-        <form onsubmit="event.preventDefault(); alert('Thank you! We will contact you shortly.');">
-            <label>Your Name</label>
-            <input type="text" required>
+  </div>
+    <!-- FOOTER -->
+    <footer>
+      © 2026 De Radiance Retreat • All Rights Reserved  
+      <br>
+      <a href="https://www.instagram.com/deradianceretreatltd/" target="_blank">Instagram</a> |
+      <a href="https://www.tiktok.com/@deradianceretreatltd" target="_blank">TikTok</a> |
+      <a href="https://wa.me/447902700222" target="_blank">WhatsApp</a>
+    </footer>
 
-            <label>Your Email</label>
-            <input type="email" required>
-
-            <label>Your Message</label>
-            <textarea rows="4" required></textarea>
-
-            <button type="submit">Send Message</button>
-        </form>
-    </div>
-</section>
-
-<footer>
-    © 2026 De Radiance Retreat. All Rights Reserved.
-</footer>
-
-<!-- Floating Social -->
+    <!-- Floating Social -->
 <div class="social-float">
     <a href="https://www.instagram.com/deradianceretreatltd/" target="_blank" class="social-icon instagram">
         <i class="fab fa-instagram"></i>
@@ -453,39 +661,9 @@ With a warm, friendly team and a peaceful atmosphere, it’s the perfect place t
 </div>
 
 
-
-
-<script>
-let lastScroll = 0;
-const header = document.querySelector("header");
-
-window.addEventListener("scroll", () => {
-    const current = window.pageYOffset;
-
-    if (current > lastScroll) {
-        header.style.transform = "translateY(-100%)";
-    } else {
-        header.style.transform = "translateY(0)";
-    }
-
-    lastScroll = current;
-});
-</script>
+  </div> <!-- end page-wrap -->
 
 </body>
 </html>
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
