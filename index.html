@@ -1,734 +1,372 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
-
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-
-<!-- Font Awesome for Social Icons -->
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-
-<!-- PWA -->
-<link rel="manifest" href="manifest.json">
-<script>
-if ("serviceWorker" in navigator) {
-  navigator.serviceWorker.register("service-worker.js");
-}
-</script>
-
-
-<title>De Radiance Retreat | Luxury Beauty & Wellness</title>
-
-
-
-<!-- Google Font -->
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Poppins:wght@300;400;500&display=swap" rel="stylesheet">
+<meta charset="UTF-8">
+<title> Home Page</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <style>
 :root {
-  --bg-main: #fdf7f8;
-  --bg-panel: rgba(255, 255, 255, 0.92);
-  --rose: #d48a8a;
-  --rose-deep: #b86a6a;
-  --rose-soft: #f3d6d6;
-  --text-main: #333333;
-  --text-soft: #666666;
-  --radius-lg: 22px;
-  --shadow-soft: 0 18px 45px rgba(212, 138, 138, 0.18);
-  --shadow-soft-hover: 0 22px 60px rgba(212, 138, 138, 0.28);
-}
-
-* {
-  box-sizing: border-box;
+    --accent: #e50914;
+    --glass-bg: rgba(20, 20, 30, 0.85);
+    --glass-border: rgba(255,255,255,0.12);
+    --text-main: #fff;
+    --text-muted: #aaa;
 }
 
 body {
-  margin: 0;
-  font-family: 'Poppins', sans-serif;
-  background:
-    radial-gradient(circle at top left, #ffe6ec 0, transparent 55%),
-    radial-gradient(circle at bottom right, #ffecec 0, transparent 55%),
-    var(--bg-main);
-  color: var(--text-main);
-  scroll-behavior: smooth;
+    margin: 0;
+    background: #050509;
+    font-family: system-ui, sans-serif;
+    color: var(--text-main);
 }
 
-.page-wrap {
-  max-width: 1100px;
-  margin: 0 auto;
-  padding: 0 18px 60px;
-}
-
-/* Sticky Navigation */
-nav {
-  position: sticky;
-  top: 0;
-  z-index: 100;
-  backdrop-filter: blur(16px);
-  background: linear-gradient(to right, rgba(255,255,255,0.96), rgba(255,245,246,0.96));
-  border-bottom: 1px solid var(--rose-soft);
-  box-shadow: 0 10px 30px rgba(212, 138, 138, 0.12);
-}
-
-.nav-inner {
-  max-width: 1100px;
-  margin: 0 auto;
-  padding: 12px 18px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-}
-
-.brand {
-  font-family: 'Playfair Display', serif;
-  font-size: 20px;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  color: var(--rose-deep);
-}
-
-.nav-links a {
-  color: var(--rose);
-  margin-left: 18px;
-  text-decoration: none;
-  font-weight: 500;
-  letter-spacing: 0.06em;
-  font-size: 13px;
-  text-transform: uppercase;
-  position: relative;
-  padding-bottom: 4px;
-  transition: 0.3s;
-}
-
-.nav-links a::after {
-  content: "";
-  position: absolute;
-  left: 0;
-  bottom: 0;
-  width: 0;
-  height: 2px;
-  background: linear-gradient(90deg, var(--rose), var(--rose-deep));
-  transition: width 0.3s;
-}
-
-.nav-links a:hover {
-  color: var(--rose-deep);
-}
-
-.nav-links a:hover::after {
-  width: 100%;
-}
-
-/* Section Shell */
-section {
-  margin-top: 40px;
-}
-
-.panel {
-  background: var(--bg-panel);
-  border-radius: var(--radius-lg);
-  box-shadow: var(--shadow-soft);
-  padding: 32px 26px;
-  position: relative;
-  overflow: hidden;
-}
-
-.panel::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background: radial-gradient(circle at top right, rgba(212,138,138,0.16), transparent 55%);
-  pointer-events: none;
-}
-
-.section-label {
-  text-transform: uppercase;
-  letter-spacing: 0.18em;
-  font-size: 11px;
-  color: var(--rose-deep);
-  margin-bottom: 6px;
-}
-
-h1, h2 {
-  font-family: 'Playfair Display', serif;
-  margin: 0 0 10px;
-  color: var(--rose-deep);
-}
-
-h1 {
-  font-size: 40px;
-}
-
-h2 {
-  font-size: 28px;
-  text-align: left;
-}
-
-.section-sub {
-  font-size: 14px;
-  color: var(--text-soft);
-  margin-bottom: 18px;
-}
-
-/* Hero Layout */
-.hero {
-  display: grid;
-  grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr);
-  gap: 26px;
-  align-items: center;
-}
-
-.hero-main p {
-  font-size: 16px;
-  line-height: 1.6;
-  color: var(--text-soft);
-  margin-bottom: 22px;
-}
-
-.hero-tagline {
-  font-size: 13px;
-  letter-spacing: 0.16em;
-  text-transform: uppercase;
-  color: var(--rose);
-  margin-bottom: 10px;
-}
-
-.hero-cta {
-  display: flex;
-  gap: 12px;
-  flex-wrap: wrap;
-  align-items: center;
-}
-
-.btn-primary {
-  background: linear-gradient(135deg, #f0c3c3, var(--rose));
-  color: #fff;
-  padding: 11px 22px;
-  border-radius: 999px;
-  border: none;
-  font-size: 14px;
-  font-weight: 600;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  cursor: pointer;
-  box-shadow: 0 14px 30px rgba(212, 138, 138, 0.45);
-  transition: 0.3s;
-}
-
-.btn-primary:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 18px 40px rgba(212, 138, 138, 0.6);
-}
-
-.btn-ghost {
-  background: transparent;
-  border-radius: 999px;
-  border: 1px solid var(--rose-soft);
-  padding: 10px 18px;
-  font-size: 13px;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-  color: var(--rose-deep);
-  cursor: pointer;
-  transition: 0.3s;
-}
-
-.btn-ghost:hover {
-  border-color: var(--rose);
-  background: rgba(244, 214, 214, 0.25);
-}
-
-.hero-side {
-  border-radius: 20px;
-  padding: 20px 18px;
-  background: radial-gradient(circle at top left, rgba(255,255,255,0.9), rgba(255,230,234,0.9));
-  box-shadow: var(--shadow-soft);
-  position: relative;
-}
-
-.hero-side::after {
-  content: "De Radiance";
-  position: absolute;
-  bottom: 10px;
-  right: 16px;
-  font-family: 'Playfair Display', serif;
-  font-size: 14px;
-  letter-spacing: 0.18em;
-  text-transform: uppercase;
-  color: rgba(184,106,106,0.35);
-}
-
-.hero-highlight {
-  font-size: 13px;
-  color: var(--text-soft);
-  margin-bottom: 10px;
-}
-
-.hero-pills {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 8px;
-  margin-top: 8px;
-}
-
-.pill {
-  font-size: 11px;
-  text-transform: uppercase;
-  letter-spacing: 0.14em;
-  padding: 6px 10px;
-  border-radius: 999px;
-  border: 1px solid rgba(212,138,138,0.4);
-  color: var(--rose-deep);
-  background: rgba(255,255,255,0.7);
-}
-
-/* GLOWING SERVICE CARDS — NEW SECTION */
-.service-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-  gap: 22px;
-  margin-top: 25px;
-}
-
-.service-card {
-  background: #ffffff;
-  padding: 28px 22px;
-  border-radius: 22px;
-  border: 1px solid rgba(212, 138, 138, 0.35);
-  box-shadow:
-    0 0 12px rgba(212, 138, 138, 0.25),
-    0 0 28px rgba(212, 138, 138, 0.18),
-    0 0 45px rgba(212, 138, 138, 0.12);
-  text-align: center;
-  color: #444;
-  transition: 0.35s ease;
-}
-
-.service-card:hover {
-  transform: translateY(-4px);
-  box-shadow:
-    0 0 18px rgba(212, 138, 138, 0.45),
-    0 0 38px rgba(212, 138, 138, 0.35),
-    0 0 65px rgba(212, 138, 138, 0.25);
-}
-
-.service-card .icon {
-  width: 70px;
-  height: 70px;
-  margin: 0 auto 14px;
-  border-radius: 50%;
-  background: rgba(212, 138, 138, 0.15);
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  font-size: 32px;
-  color: #d48a8a;
-  box-shadow: 0 0 18px rgba(212, 138, 138, 0.35);
-}
-
-.service-card h3 {
-  margin: 10px 0 6px;
-  font-size: 20px;
-  font-weight: 600;
-  color: #b56f6f;
-}
-
-.service-card p {
-  font-size: 14px;
-  color: #666;
-  line-height: 1.5;
-}
-
-/* Gallery */
-.gallery-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-  gap: 14px;
-  margin-top: 10px;
-}
-
-.gallery-grid img {
-  width: 100%;
-  display: block;
-  border-radius: 16px;
-  border: 1px solid var(--rose-soft);
-  box-shadow: 0 12px 30px rgba(212,138,138,0.25);
-  transition: 0.35s;
-  object-fit: cover;
-}
-
-.gallery-grid img:hover {
-  transform: translateY(-4px) scale(1.02);
-  box-shadow: 0 18px 45px rgba(212,138,138,0.4);
-}
-
-/* Contact */
-.contact-grid {
-  display: grid;
-  grid-template-columns: minmax(0, 1.1fr) minmax(0, 0.9fr);
-  gap: 26px;
-}
-
-form input, form textarea {
-  width: 100%;
-  padding: 11px 12px;
-  margin: 6px 0 12px;
-  background: rgba(255,255,255,0.9);
-  border: 1px solid var(--rose-soft);
-  color: var(--text-main);
-  border-radius: 10px;
-  box-shadow: 0 6px 18px rgba(212, 138, 138, 0.12);
-  font-size: 13px;
-}
-
-form textarea {
-  resize: vertical;
-  min-height: 110px;
-}
-
-.contact-info {
-  font-size: 13px;
-  color: var(--text-soft);
-  line-height: 1.7;
-}
-
-.contact-info strong {
-  color: var(--rose-deep);
-}
-
-/* Footer */
-footer {
-  text-align: center;
-  padding: 26px 18px 10px;
-  color: #888;
-  font-size: 12px;
-  border-top: 1px solid var(--rose-soft);
-  margin-top: 40px;
-}
-
-footer a {
-  color: var(--rose);
-  text-decoration: none;
-  margin: 0 5px;
-  font-weight: 500;
-}
-
-/* Floating Social Buttons */
-.social-float {
-  position: fixed;
-  bottom: 20px;
-  right: 20px;
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-  z-index: 300;
-}
-
-.social-icon {
-  width: 52px;
-  height: 52px;
-  border-radius: 50%;
-  background: radial-gradient(circle at top left, #ffe6ec, var(--rose));
-  color: #fff;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  font-size: 22px;
-  text-decoration: none;
-  box-shadow: 0 14px 30px rgba(212, 138, 138, 0.6);
-  transition: 0.3s;
-}
-
-.social-icon:hover {
-  transform: translateY(-3px) scale(1.05);
-  box-shadow: 0 18px 45px rgba(212, 138, 138, 0.8);
-}
-
-.social-icon.whatsapp {
-  color: #25D366; /* WhatsApp green */
-}
-
-.social-icon.instagram {
-  color: #ff0099; /* Pink */
-}
-
-.social-icon.tiktok {
-  color: #ffffff; /* White */
-}
-
-.social-icon.tiktok:hover {
-  color: #000000; /* Hover colour example */
-}
-
-/* Responsive */
-@media (max-width: 800px) {
-  .hero,
-  .contact-grid {
-    grid-template-columns: 1fr;
-  }
-
-  .hero-side {
-    order: -1;
-  }
-
-  .nav-inner {
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 6px;
-  }
-
-  .nav-links {
+/* NETFLIX STYLE TITLE RIBBON */
+.netflix-title {
     width: 100%;
-  }
+    background: #e50914;
+    color: #ffffff;
+    font-family: 'Arial Black', Impact, sans-serif;
+    font-size: 34px;
+    text-align: center;
+    padding: 20px 0;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    border-bottom: 4px solid #b00610;
+    margin-top: 56px;
+}
 
-  .nav-links a {
-    margin-left: 0;
-    margin-right: 14px;
-  }
+/* NAV */
+.nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    height: 56px;
+    background: rgba(0,0,0,0.85);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid rgba(255,255,255,0.1);
+    display: flex;
+    align-items: center;
+    padding: 0 16px;
+    z-index: 100;
+}
+
+.nav-title {
+    font-size: 15px;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+}
+
+/* PAGE WRAPPER */
+.page {
+    margin-top: 20px;
+    padding: 20px;
+}
+
+/* FOLDER TILE */
+.folder {
+    width: 160px;
+    height: 120px;
+    background: var(--glass-bg);
+    border: 1px solid var(--glass-border);
+    border-radius: 14px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    font-weight: 600;
+    font-size: 16px;
+    transition: 0.2s ease;
+    margin-bottom: 20px;
+}
+
+.folder:hover {
+    transform: translateY(-4px) scale(1.03);
+    border-color: rgba(255,255,255,0.25);
+}
+
+/* GENRE LIST */
+.genre {
+    padding: 14px 0;
+    font-size: 18px;
+    cursor: pointer;
+    border-bottom: 1px solid rgba(255,255,255,0.1);
+}
+
+.genre:hover {
+    color: var(--accent);
+}
+
+/* ROW */
+.row {
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+    margin-top: 20px;
+}
+
+/* TILE */
+.tile {
+    width: 140px;
+    height: 210px;
+    border-radius: 14px;
+    background: var(--glass-bg);
+    border: 1px solid var(--glass-border);
+    overflow: hidden;
+    cursor: pointer;
+    transition: 0.2s ease;
+}
+
+.tile:hover {
+    transform: translateY(-4px) scale(1.03);
+    border-color: rgba(255,255,255,0.25);
+}
+
+.tile video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* ADD TILE */
+.add-tile {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-style: dashed;
+    border-color: var(--accent);
+    background: rgba(229, 9, 20, 0.15);
+}
+
+.add-icon {
+    font-size: 38px;
+    color: var(--accent);
+}
+
+/* BACK BUTTON */
+.back {
+    margin-bottom: 20px;
+    cursor: pointer;
+    color: var(--accent);
+    font-size: 14px;
 }
 </style>
-
 </head>
 
 <body>
 
-<nav>
-  <div class="nav-inner">
-    <div class="brand">De Radiance Retreat</div>
-    <div class="nav-links">
-      <a href="#home">Home</a>
-      <a href="#services">Services</a>
-      <a href="#gallery">Gallery</a>
-      <a href="#contact">Contact</a>
-    </div>
-  </div>
-</nav>
-
-<div class="page-wrap">
-
-<!-- HERO -->
-<section id="home">
-  <div class="panel hero">
-    <div class="hero-main">
-      <div class="hero-tagline">Luxury Beauty & Wellness•</div>
-      <h1>Radiance, Rejuvenation & Retreat in One Space.</h1>
-      <p>
-        Indulge in a moment that’s just for you. Our luxury salon experience blends expert care with calming comfort, giving you space to unwind, glow, and feel beautifully renewed. Treat yourself you deserve it📲
-      </p>
-      <div class="hero-cta">
-        <a href="#contact"><button class="btn-primary">Book Appointment</button></a>
-        <a href="#services"><button class="btn-ghost">View Services</button></a>
-      </div>
-    </div>
-
-    <div class="hero-side">
-      <div class="section-label">At a glance</div>
-      <div class="hero-highlight"><strong>Location:</strong> Lower Darwen, Blackburn</div>
-      <div class="hero-highlight"><strong>Specialities:</strong> Providing various beauty treatments to help you escape whilst pampering yourself see below to see what services we offer.</div>
-      <div class="hero-pills">
-        <div class="pill">Private Studio</div>
-        <div class="pill">Women Only</div>
-        <div class="pill">Luxury Touch</div>
-        <div class="pill">Holistic Care</div>
-      </div>
-    </div>
-  </div>
-</section>
-
-
-<!-- SERVICES (NEW GLOWING CARDS) -->
-<section id="services">
-  <div class="panel">
-    <div class="section-label">Treatments</div>
-    <h2>Our Luxury Services</h2>
-    <p class="section-sub">
-      A carefully curated menu of beauty and wellness treatments, blending relaxation, results and ritual.
-    </p>
-
-    <div class="service-grid">
-      <div class="service-card">
-        <div class="icon"><i class="fas fa-spa"></i></div>
-        <h3>Facials</h3>
-        <p>Glow-boosting treatments tailored to your skin.</p>
-      </div>
-
-      <div class="service-card">
-        <div class="icon"><i class="fas fa-hand-sparkles"></i></div>
-        <h3>Manicure</h3>
-        <p>Luxury nail shaping, buffing & polish.</p>
-      </div>
-
-      <div class="service-card">
-        <div class="icon"><i class="fas fa-shoe-prints"></i></div>
-        <h3>Pedicure</h3>
-        <p>Relaxing foot care & deep hydration.</p>
-      </div>
-
-      <div class="service-card">
-        <div class="icon"><i class="fas fa-stream"></i></div>
-        <h3>Waxing</h3>
-        <p>Smooth, long-lasting hair removal.</p>
-      </div>
-
-      <div class="service-card">
-        <div class="icon"><i class="fas fa-leaf"></i></div>
-        <h3>Body Massages</h3>
-        <p>Relaxation, deep tissue & aromatherapy.</p>
-      </div>
-
-      <div class="service-card">
-        <div class="icon"><i class="fas fa-eye"></i></div>
-        <h3>Threading</h3>
-        <p>Precision brow & facial hair shaping.</p>
-      </div>
-
-      <div class="service-card">
-        <div class="icon"><i class="fas fa-feather"></i></div>
-        <h3>Lashlift</h3>
-        <p>Natural curl enhancement for lashes.</p>
-      </div>
-
-      <div class="service-card">
-        <div class="icon"><i class="fas fa-eye-dropper"></i></div>
-        <h3>Eyebrow & Eyelash Tint</h3>
-        <p>Define & enhance your natural beauty.</p>
-      </div>
-
-      <div class="service-card">
-        <div class="icon"><i class="fas fa-ear-listen"></i></div>
-        <h3>Hopi Ear Candling</h3>
-        <p>Relaxing ear cleansing therapy.</p>
-      </div>
-
-      <div class="service-card">
-        <div class="icon"><i class="fas fa-moon"></i></div>
-        <h3>Hijama Cupping Therapy</h3>
-        <p>Detoxifying traditional therapy.</p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- GALLERY -->
-<section id="gallery">
-  <div class="panel">
-    <div class="section-label">Inside the retreat</div>
-    <h2>Gallery</h2>
-    <p class="section-sub">
-      <b>Step into our relaxing world of treatments and pampering, created to help you unwind and feel your best. Take a look at our gallery to see everything we offer and the kind of experience you can expect.</b>
-   </p>
-
-    <div class="gallery-grid">
-      <img src="https://i.ibb.co/Xx4NxBjQ/14.png" alt="">
-      <img src="https://i.ibb.co/G4brcrsH/13.png" alt="">
-      <img src="https://i.ibb.co/zWgYSjSc/15.png" alt="">
-      <img src="https://i.ibb.co/Pv2ffS83/17.png" alt="">
-      <img src="https://i.ibb.co/XZ9GFyP5/20.png" alt="">
-      <img src="https://i.ibb.co/KpQXXKwF/21.png" alt="">
-      <img src="https://i.ibb.co/1tbW27FB/3.png" alt="">
-      <img src="https://i.ibb.co/B59mtdT4/4.png" alt="">
-      <img src="https://i.ibb.co/ynwQ6QjL/5.png" alt="">
-      <img src="https://i.ibb.co/G4RNw4JQ/6.png" alt="">
-      <img src="https://i.ibb.co/8DRhBLRZ/7.png" alt="">
-      <img src="https://i.ibb.co/ZzYJ0d0Z/8.png" alt="">
-      <img src="https://i.ibb.co/LdMzCCqT/9.png" alt="">
-      <img src="https://i.ibb.co/NgrYHJ6q/10.png" alt="">
-      <img src="https://i.ibb.co/Q3YbWGzJ/11.png" alt="">
-      <img src="https://i.ibb.co/5WqDKWYW/12.png" alt="">
-    </div>
-  </div>
-</section>
-
-<!-- CONTACT -->
-<section id="contact">
-  <div class="panel">
-    <div class="section-label">Bookings & enquiries</div>
-    <h2>Contact & Booking</h2>
-    <p class="section-sub">
-      Share a few details and we’ll get back to you with available times and treatment options.
-    </p>
-
-    <div class="contact-grid">
-
-      <!-- FIXED FORM -->
-      <form onsubmit="sendToWhatsApp(); return false;">
-        <input id="name" type="text" placeholder="Your Name" required>
-        <input id="email" type="email" placeholder="Your Email" required>
-        <textarea id="message" rows="4" placeholder="Your Message or Treatment Request" required></textarea>
-        <button type="submit" class="btn-primary">Send Message</button>
-      </form>
-
-      <div class="contact-info">
-        <p><strong>Prefer WhatsApp?</strong><br>
-        Message directly via the floating WhatsApp icon on the screen.</p>
-
-        <p><strong>Location:</strong><br>
-        Private studio in Lower Darwen, Blackburn (full address shared upon booking).</p>
-
-        <p><strong>Opening:</strong><br>
-        By appointment only — flexible daytime and selected evening slots.</p>
-      </div>
-
-<p>MONDAY-SUNDAY- 9:00am- 8:00pm</p>  
-    
- <b> <p> Message us or call us using this number 07902 700222</P> </b>
-           
-    </div>
-  </div>
-</section>
-
+<div class="nav">
+    <div class="nav-title">My Video Library</div>
 </div>
 
-<!-- FOOTER -->
-<footer>
-  © 2026 De Radiance Retreat • All Rights Reserved
-  <br>
-  <a href="https://www.instagram.com/deradianceretreatltd/" target="_blank">Instagram</a> |
-  <a href="https://www.tiktok.com/@deradianceretreatltd" target="_blank">TikTok</a> |
-  <a href="https://wa.me/447902700222" target="_blank">WhatsApp</a>
-</footer>
-
-<!-- Floating Social -->
-<div class="social-float">
-  <a href="https://www.instagram.com/deradianceretreatltd/" target="_blank" class="social-icon instagram">
-    <i class="fab fa-instagram"></i>
-  </a>
-  <a href="https://www.tiktok.com/@deradianceretreatltd" target="_blank" class="social-icon tiktok">
-    <i class="fab fa-tiktok"></i>
-  </a>
-  <a href="https://wa.me/447902700222" target="_blank" class="social-icon whatsapp">
-    <i class="fab fa-whatsapp"></i>
-  </a>
+<div class="netflix-title">
+    RUKHSAAR'S NETFLIX & CHILL
 </div>
 
+<div class="page" id="page"></div>
 
-</div> <!-- end page-wrap -->
+<input type="file" id="fileInput" accept="video/mp4" multiple style="display:none">
 
 <script>
-function sendToWhatsApp() {
-  var name = document.getElementById("name").value;
-  var email = document.getElementById("email").value;
-  var message = document.getElementById("message").value;
+const page = document.getElementById("page");
+const fileInput = document.getElementById("fileInput");
 
-  var whatsappNumber = "447902700222"; // Your WhatsApp number
+/* MOVIE GENRES */
+const movieGenres = [
+    "Action",
+    "Comedy",
+    "Romance",
+    "My Favourites"
+];
 
-  var url = "https://wa.me/" + whatsappNumber + "?text="
-    + "Name: " + encodeURIComponent(name) + "%0A"
-    + "Email: " + encodeURIComponent(email) + "%0A"
-    + "Message: " + encodeURIComponent(message);
+/* TV SERIES GENRES */
+const seriesGenres = [
+    "Drama",
+    "Sitcom",
+    "Thriller",
+    "Sci-Fi",
+    "cartoon",
+    "My Series Favourites"
+];
 
-  window.open(url, "_blank");
+let currentGenre = null;
+let currentFolder = null;
+
+/* HOME */
+function showHome() {
+    page.innerHTML = `
+        <div class="folder" onclick="openMovies()">Movies</div>
+        <div class="folder" onclick="openSeries()">TV Series</div>
+    `;
 }
+
+/* MOVIES */
+function openMovies() {
+    currentFolder = "movies";
+
+    page.innerHTML = `
+        <div class="back" onclick="showHome()">← Back</div>
+        <h2>Movies</h2>
+    `;
+
+    movieGenres.forEach(g => {
+        const div = document.createElement("div");
+        div.className = "genre";
+        div.innerText = g;
+        div.onclick = () => openGenre(g);
+        page.appendChild(div);
+    });
+}
+
+/* SERIES */
+function openSeries() {
+    currentFolder = "series";
+
+    page.innerHTML = `
+        <div class="back" onclick="showHome()">← Back</div>
+        <h2>TV Series</h2>
+    `;
+
+    seriesGenres.forEach(g => {
+        const div = document.createElement("div");
+        div.className = "genre";
+        div.innerText = g;
+
+        if (g === "Sitcom") {
+            div.onclick = () => openSitcomFolder();
+        } else {
+            div.onclick = () => openGenre(g);
+        }
+
+        page.appendChild(div);
+    });
+}
+
+/* ⭐ 20 SITCOM SHOWS ⭐ */
+const sitcomShows = [
+    { id: "friends",          name: "Friends",                poster: "FRIENDS_POSTER.jpg" },
+    { id: "simpsons",         name: "The Simpsons",           poster: "THE_SIMPSONS_POSTER.jpg" },
+    { id: "samcat",           name: "Sam & Cat",              poster: "SAM_AND_CAT_POSTER.jpg" },
+    { id: "twobrokegirls",    name: "2 Broke Girls",          poster: "TWO_BROKE_GIRLS_POSTER.jpg" },
+    { id: "georgiemandy",     name: "Georgie & Mandy",        poster: "GEORGIE_AND_MANDY_POSTER.jpg" },
+    { id: "suitelifeondeck",  name: "The Suite Life on Deck", poster: "SUITE_LIFE_ON_DECK_POSTER.jpg" },
+    { id: "drakejosh",        name: "Drake & Josh",           poster: "DRAKE_AND_JOSH_POSTER.jpg" },
+    { id: "shakeitup",        name: "Shake It Up",            poster: "SHAKE_IT_UP_POSTER.jpg" },
+    { id: "ravenshome",       name: "Raven's Home",           poster: "RAVENS_HOME_POSTER.jpg" },
+    { id: "zoey101",          name: "Zoey 101",               poster: "ZOEY_101_POSTER.jpg" },
+    { id: "melissajoey",      name: "Melissa & Joey",         poster: "MELISSA_AND_JOEY_POSTER.jpg" },
+    { id: "victorious",       name: "Victorious",             poster: "VICTORIOUS_POSTER.jpg" },
+    { id: "goodluckcharlie",  name: "Good Luck Charlie",      poster: "GOOD_LUCK_CHARLIE_POSTER.jpg" },
+    { id: "kcundercover",     name: "K.C. Undercover",        poster: "KC_UNDERCOVER_POSTER.jpg" },
+    { id: "wizards",          name: "Wizards of Waverly Place", poster: "WIZARDS_OF_WAVERLY_PLACE_POSTER.jpg" },
+    { id: "icarly",           name: "iCarly",                 poster: "ICARLY_POSTER.jpg" },
+    { id: "familyguy",        name: "Family Guy",             poster: "FAMILY_GUY_POSTER.jpg" },
+    { id: "youngsheldon",     name: "Young Sheldon",          poster: "YOUNG_SHELDON_POSTER.jpg" },
+    { id: "bigbang",          name: "The Big Bang Theory",    poster: "BIG_BANG_THEORY_POSTER.jpg" },
+    { id: "theneighbourhood", name: "The Neighbourhood",      poster: "THE_NEIGHBOURHOOD_POSTER.jpg" }
+];
+
+/* ⭐ SITCOM FOLDER — AUTO GENERATES ALL 20 CARDS ⭐ */
+function openSitcomFolder() {
+    currentFolder = "series";
+
+    page.innerHTML = `
+        <div class="back" onclick="openSeries()">← Back</div>
+        <h2>Sitcom</h2>
+        <div class="row" id="sitcom-row"></div>
+    `;
+
+    const row = document.getElementById("sitcom-row");
+
+    sitcomShows.forEach(show => {
+        const tile = document.createElement("div");
+        tile.className = "tile";
+        tile.onclick = () => openSitcomShow(show.id);
+
+        tile.innerHTML = `
+            <img src="${show.poster}"
+                 style="width:100%; height:100%; object-fit:cover;">
+        `;
+
+        row.appendChild(tile);
+    });
+}
+
+/* ⭐ AUTO PAGE FOR EACH SHOW ⭐ */
+function openSitcomShow(id) {
+    const show = sitcomShows.find(s => s.id === id);
+    if (!show) return;
+
+    currentFolder = "series";
+    currentGenre = show.id;
+
+    page.innerHTML = `
+        <div class="back" onclick="openSitcomFolder()">← Back</div>
+        <h2>${show.name}</h2>
+
+        <div class="row" id="row-series-${show.id}">
+            <div class="tile">
+                <img src="${show.poster}"
+                     style="width:100%; height:100%; object-fit:cover;">
+            </div>
+
+            <div class="tile add-tile" onclick="triggerUpload()">
+                <div class="add-icon">+</div>
+            </div>
+        </div>
+    `;
+}
+
+/* GENRE PAGE */
+function openGenre(name) {
+    currentGenre = name;
+
+    page.innerHTML = `
+        <div class="back" onclick="${currentFolder === 'movies' ? 'openMovies()' : 'openSeries()'}">← Back</div>
+        <h2>${name}</h2>
+
+        <div class="row" id="row-${currentFolder}-${name}">
+            <div class="tile add-tile" onclick="triggerUpload()">
+                <div class="add-icon">+</div>
+            </div>
+        </div>
+    `;
+}
+
+/* Upload trigger */
+function triggerUpload() {
+    fileInput.click();
+}
+
+/* Handle uploads */
+fileInput.addEventListener("change", function () {
+    const row = document.getElementById(`row-${currentFolder}-${currentGenre}`);
+    const files = Array.from(this.files);
+
+    files.forEach(file => {
+        if (!file.type.startsWith("video/")) return;
+
+        const url = URL.createObjectURL(file);
+
+        const tile = document.createElement("div");
+        tile.className = "tile";
+
+        const vid = document.createElement("video");
+        vid.src = url;
+        vid.autoplay = true;
+        vid.loop = true;
+        vid.muted = true;
+
+        tile.appendChild(vid);
+        row.appendChild(tile);
+    });
+
+    this.value = "";
+});
+
+/* Load homepage initially */
+showHome();
 </script>
 
 </body>
 </html>
-
-
-
-
-
-
-
-
